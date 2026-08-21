@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Kanban } from "./components/Kanban";
+import { Kanban } from "../components/Kanban";
 
 export default async function PipelinePage() {
   const applications = await prisma.application.findMany({

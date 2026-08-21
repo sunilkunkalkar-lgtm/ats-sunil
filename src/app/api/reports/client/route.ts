@@ -22,24 +22,26 @@ export async function GET(request: Request) {
   });
 
   const rows = roles.map((role) => {
-    const counts = Object.fromEntries(PIPELINE_COLUMNS.map((c) => [c.status, 0])) as Record<
-      string,
-      number
-    >;
+    const counts: Record<string, number> = Object.fromEntries(
+      PIPELINE_COLUMNS.map((c) => [c.status, 0]),
+    );
     for (const app of role.applications) {
       counts[app.status] += 1;
     }
-    return {
+    const row: Record<string, string | number> = {
       client: role.client.name,
       role: role.title,
       priority: role.priority,
       slaDays: role.slaDays,
       openedAt: role.openedAt.toISOString(),
-      ...Object.fromEntries(PIPELINE_COLUMNS.map((c) => [c.status, counts[c.status]])),
       summary: PIPELINE_COLUMNS.filter((c) => counts[c.status] > 0)
         .map((c) => `${counts[c.status]} ${statusLabel(c.status).toLowerCase()}`)
         .join(", "),
     };
+    for (const column of PIPELINE_COLUMNS) {
+      row[column.status] = counts[column.status];
+    }
+    return row;
   });
 
   if (format === "csv") {
@@ -54,11 +56,11 @@ export async function GET(request: Request) {
       headers.join(","),
       ...rows.map((row) =>
         [
-          csv(row.client),
-          csv(row.role),
-          csv(row.priority),
+          csv(String(row.client)),
+          csv(String(row.role)),
+          csv(String(row.priority)),
           ...PIPELINE_COLUMNS.map((c) => String(row[c.status] ?? 0)),
-          csv(row.summary),
+          csv(String(row.summary)),
         ].join(","),
       ),
     ];
