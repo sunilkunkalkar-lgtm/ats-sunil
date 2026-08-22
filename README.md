@@ -6,12 +6,14 @@ A centralized applicant tracking system for a four-recruiter desk hiring ~60 peo
 
 The Cursor preview is **not** the same as Chrome. Chrome can only open the app if it is running on **your PC**.
 
+**If `http://127.0.0.1:3000` refuses to connect**, follow [OPEN-IN-CHROME.md](./OPEN-IN-CHROME.md) and use **GitHub Codespaces** (green **Code** button → **Codespaces**). That creates an `https://….app.github.dev` link Chrome can open.
+
 1. Install Node.js LTS from https://nodejs.org (restart Cursor after installing).
 2. Download or pull this repo onto your computer.
 3. Double-click **`start-ats.bat`**. Leave that black window open.
 4. Chrome should open **http://127.0.0.1:3000** after about 10 seconds. If it does not, paste that address yourself. Use `http`, never `https`, and never port `3001`.
 
-If double-click does nothing, right-click `start-ats.bat` → **Run as administrator** is not required; if Windows blocks it, click **More info** → **Run anyway**.
+If double-click does nothing, Windows may have blocked the file — click **More info** → **Run anyway**.
 
 ## Recommended relational schema
 

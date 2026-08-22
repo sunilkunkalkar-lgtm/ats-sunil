@@ -1,0 +1,19 @@
+{
+  "name": "Northline ATS",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Northline ATS",
+      "onAutoForward": "openBrowser",
+      "visibility": "public"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash -lc 'nohup npm run dev > /tmp/ats-dev.log 2>&1 &'",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}

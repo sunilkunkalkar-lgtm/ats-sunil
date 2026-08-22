@@ -34,7 +34,7 @@ call npm run db:seed
 echo Starting server on http://127.0.0.1:3000 ...
 start "" cmd /c "timeout /t 10 /nobreak >nul && start http://127.0.0.1:3000"
 
-call npx next dev -H 127.0.0.1 -p 3000
+call npx next dev -H 0.0.0.0 -p 3000
 echo.
 echo Server stopped.
 pause
