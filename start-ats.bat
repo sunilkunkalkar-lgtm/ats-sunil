@@ -28,7 +28,7 @@ if errorlevel 1 (
 
 echo Preparing database...
 call npx prisma generate
-call npx prisma db push
+call npx prisma migrate deploy
 call npm run db:seed
 
 echo Starting server on http://127.0.0.1:3000 ...

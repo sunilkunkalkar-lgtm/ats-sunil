@@ -114,10 +114,16 @@ Applications 1──* ActivityLog
 cp .env.example .env
 npm install
 npx prisma generate
-npx prisma db push
+npx prisma migrate deploy
 npm run db:seed
 npm run dev
 ```
+
+`DATABASE_URL` must be PostgreSQL (Prisma Postgres on Compute, or any Postgres locally). The Windows launcher still copies `.env.example`; replace the placeholder URL before first run.
+
+## Prisma Compute
+
+This app deploys with `@prisma/cli` (`prisma.compute.json`, region `ap-southeast-1`, Next.js standalone). Production binds `0.0.0.0` and reads `PORT`.
 
 Then open [http://127.0.0.1:3000](http://127.0.0.1:3000) in Chrome. Use **Acting as** in the sidebar to impersonate another recruiter, then try creating `priya.nair@example.com` — create and contact are blocked.
 
@@ -128,6 +134,6 @@ npm run build
 
 ## Production notes
 
-- Move `DATABASE_URL` to Postgres and keep the same Prisma schema.
+- Keep `DATABASE_URL` on Prisma Postgres (wired as the Compute project primary database).
 - Add real auth (Microsoft Entra / Google Workspace) mapped to `Recruiters`.
 - Replace poll-based sync with Postgres `LISTEN/NOTIFY` or a socket layer if the desk grows past a handful of concurrent users.
