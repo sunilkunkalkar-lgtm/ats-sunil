@@ -1,6 +1,8 @@
-# Northline ATS
+# Suii ATS
 
 A centralized applicant tracking system for a four-recruiter desk hiring ~60 people per quarter. It replaces shared spreadsheets with one candidate record, hard duplicate blocking, 3-week SLA clocks, a Kanban pipeline, and a live client status view.
+
+Repository: [github.com/sunilkunkalkar-lgtm/suii-ats-](https://github.com/sunilkunkalkar-lgtm/suii-ats-)
 
 ## Open in Chrome (Windows)
 

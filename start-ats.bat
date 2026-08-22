@@ -3,7 +3,7 @@ setlocal
 cd /d "%~dp0"
 
 echo.
-echo === Northline ATS ===
+echo === Suii ATS ===
 echo This window must stay open. Chrome will open http://127.0.0.1:3000
 echo.
 
