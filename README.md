@@ -2,6 +2,17 @@
 
 A centralized applicant tracking system for a four-recruiter desk hiring ~60 people per quarter. It replaces shared spreadsheets with one candidate record, hard duplicate blocking, 3-week SLA clocks, a Kanban pipeline, and a live client status view.
 
+## Open in Chrome (Windows)
+
+The Cursor preview is **not** the same as Chrome. Chrome can only open the app if it is running on **your PC**.
+
+1. Install Node.js LTS from https://nodejs.org (restart Cursor after installing).
+2. Download or pull this repo onto your computer.
+3. Double-click **`start-ats.bat`**. Leave that black window open.
+4. Chrome should open **http://127.0.0.1:3000** after about 10 seconds. If it does not, paste that address yourself. Use `http`, never `https`, and never port `3001`.
+
+If double-click does nothing, right-click `start-ats.bat` → **Run as administrator** is not required; if Windows blocks it, click **More info** → **Run anyway**.
+
 ## Recommended relational schema
 
 SQLite in development (`prisma/schema.prisma`); the same model maps cleanly to Postgres in production.
@@ -106,7 +117,7 @@ npm run db:seed
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Use **Acting as** in the sidebar to impersonate another recruiter, then try creating `priya.nair@example.com` — create and contact are blocked.
+Then open [http://127.0.0.1:3000](http://127.0.0.1:3000) in Chrome. Use **Acting as** in the sidebar to impersonate another recruiter, then try creating `priya.nair@example.com` — create and contact are blocked.
 
 ```bash
 npm test
