@@ -1,15 +1,10 @@
+import path from "path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
   serverExternalPackages: ["@prisma/client", "prisma"],
-  allowedDevOrigins: [
-    "127.0.0.1",
-    "localhost",
-    "*.app.github.dev",
-    "*.github.dev",
-    "*.githubpreview.dev",
-  ],
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
+  outputFileTracingRoot: path.join(__dirname),
 };
 
 export default nextConfig;

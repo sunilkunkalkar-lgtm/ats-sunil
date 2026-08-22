@@ -2,6 +2,8 @@
 
 A centralized applicant tracking system for a four-recruiter desk hiring ~60 people per quarter. It replaces shared spreadsheets with one candidate record, hard duplicate blocking, 3-week SLA clocks, a Kanban pipeline, and a live client status view.
 
+**Northline ATS is not Suii ATS.** Suii is a separate product in [`suii-ats/`](./suii-ats): its own database, recruiter sessions, UI, and port (`3002`). Do not mix the two desks.
+
 ## Open in Chrome (Windows)
 
 The Cursor preview is **not** the same as Chrome. Chrome can only open the app if it is running on **your PC**.
@@ -114,10 +116,16 @@ Applications 1──* ActivityLog
 cp .env.example .env
 npm install
 npx prisma generate
-npx prisma db push
+npx prisma migrate deploy
 npm run db:seed
 npm run dev
 ```
+
+`DATABASE_URL` must be PostgreSQL (Prisma Postgres on Compute, or any Postgres locally). The Windows launcher still copies `.env.example`; replace the placeholder URL before first run.
+
+## Prisma Compute
+
+This app deploys with `@prisma/cli` (`prisma.compute.json`, region `ap-southeast-1`, Next.js standalone). Production binds `0.0.0.0` and reads `PORT`.
 
 Then open [http://127.0.0.1:3000](http://127.0.0.1:3000) in Chrome. Use **Acting as** in the sidebar to impersonate another recruiter, then try creating `priya.nair@example.com` — create and contact are blocked.
 
@@ -128,6 +136,6 @@ npm run build
 
 ## Production notes
 
-- Move `DATABASE_URL` to Postgres and keep the same Prisma schema.
+- Keep `DATABASE_URL` on Prisma Postgres (wired as the Compute project primary database).
 - Add real auth (Microsoft Entra / Google Workspace) mapped to `Recruiters`.
 - Replace poll-based sync with Postgres `LISTEN/NOTIFY` or a socket layer if the desk grows past a handful of concurrent users.

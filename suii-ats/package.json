@@ -1,21 +1,17 @@
 {
-  "name": "ats-sunil",
+  "name": "suii-ats",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0 -p 3000",
+    "dev": "next dev -H 127.0.0.1 -p 3002",
     "build": "prisma generate && next build",
-    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
-    "db:migrate": "prisma migrate deploy",
+    "start": "next start -H 127.0.0.1 -p 3002",
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:reset": "prisma db push --force-reset && tsx prisma/seed.ts",
-    "test": "tsx --test src/lib/*.test.ts",
-    "suii:dev": "npm run dev --prefix suii-ats",
-    "suii:test": "npm test --prefix suii-ats",
-    "suii:build": "npm run build --prefix suii-ats"
+    "test": "tsx --test src/lib/*.test.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
