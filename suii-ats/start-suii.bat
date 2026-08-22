@@ -3,8 +3,8 @@ setlocal
 cd /d "%~dp0"
 
 echo.
-echo === Northline ATS ===
-echo This window must stay open. Chrome will open http://127.0.0.1:3000
+echo === Suii ATS (separate from Northline) ===
+echo This window must stay open. Chrome will open http://127.0.0.1:3002
 echo.
 
 where node >nul 2>&1
@@ -26,15 +26,15 @@ if errorlevel 1 (
   exit /b 1
 )
 
-echo Preparing database...
+echo Preparing Suii database...
 call npx prisma generate
 call npx prisma db push
 call npm run db:seed
 
-echo Starting server on http://127.0.0.1:3000 ...
-start "" cmd /c "timeout /t 10 /nobreak >nul && start http://127.0.0.1:3000"
+echo Starting Suii ATS on http://127.0.0.1:3002 ...
+start "" cmd /c "timeout /t 10 /nobreak >nul && start http://127.0.0.1:3002"
 
-call npx next dev -H 127.0.0.1 -p 3000
+call npx next dev -H 127.0.0.1 -p 3002
 echo.
-echo Server stopped.
+echo Suii server stopped.
 pause

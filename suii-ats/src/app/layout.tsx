@@ -7,8 +7,8 @@ import { RecruiterSwitcher } from "./components/RecruiterSwitcher";
 import { SyncWatcher } from "./components/SyncWatcher";
 
 export const metadata: Metadata = {
-  title: "Northline ATS",
-  description: "Single source of truth for recruiting operations",
+  title: "Suii ATS",
+  description: "Standalone applicant tracking for the Suii talent desk",
 };
 
 export const dynamic = "force-dynamic";
@@ -26,8 +26,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className="app">
           <aside className="sidebar">
             <div className="brand">
-              Northline
-              <small>Applicant tracking</small>
+              Suii
+              <small>Talent OS</small>
             </div>
             <nav className="nav">
               <Link href="/">Dashboard</Link>

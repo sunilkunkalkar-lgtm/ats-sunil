@@ -17,10 +17,10 @@ async function main() {
   await prisma.recruiter.deleteMany();
 
   const [maya, ravi, lena, owen] = await Promise.all([
-    prisma.recruiter.create({ data: { name: "Maya Chen", email: "maya@suii.staff" } }),
-    prisma.recruiter.create({ data: { name: "Ravi Patel", email: "ravi@suii.staff" } }),
-    prisma.recruiter.create({ data: { name: "Lena Okonkwo", email: "lena@suii.staff" } }),
-    prisma.recruiter.create({ data: { name: "Owen Brooks", email: "owen@suii.staff" } }),
+    prisma.recruiter.create({ data: { name: "Maya Chen", email: "maya@northline.staff" } }),
+    prisma.recruiter.create({ data: { name: "Ravi Patel", email: "ravi@northline.staff" } }),
+    prisma.recruiter.create({ data: { name: "Lena Okonkwo", email: "lena@northline.staff" } }),
+    prisma.recruiter.create({ data: { name: "Owen Brooks", email: "owen@northline.staff" } }),
   ]);
 
   const [helix, meridian, cobalt] = await Promise.all([
@@ -251,7 +251,7 @@ async function main() {
     }
   }
 
-  console.log("Seeded Suii ATS demo data.");
+  console.log("Seeded Northline ATS demo data.");
 }
 
 main()
